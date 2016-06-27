@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+    return view('inicio');
+});*/
+
+Route::get('/','CuentaController@logIn');
+Route::get('cuenta/logout','CuentaController@logOut');
+Route::resource('cuenta','CuentaController',['only'=>['store']]);
+
+Route::resource('profesor', 'ProfesorController');
+Route::resource('salon', 'SalonController');

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Servicio no disponible.</title>
+        <title>Página no encontrada</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Este servicio no esta disponible por el momento.</div>
+                <div class="title">Lo sentimos esta página no se encuentra disponible.</div>
             </div>
         </div>
     </body>

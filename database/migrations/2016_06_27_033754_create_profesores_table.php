@@ -16,7 +16,7 @@ class CreateProfesoresTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('email')->unique();
-            $table->string('telefono', 15);
+            $table->string('telefono', 15)->nullable();
             $table->timestamps();
         });
     }

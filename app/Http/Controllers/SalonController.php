@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use Colegio\Http\Requests;
 use Colegio\Http\Controllers\Controller;
 
-use Colegio\Entities\Profesor;
+use Colegio\Entities\Salon;
 
 use Session;
 use Redirect;
 use Response;
 
-class ProfesorController extends Controller
+class SalonController extends Controller
 {
     public function __construct(Request $request)
     {
@@ -26,8 +26,8 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesores = Profesor::paginate(20);
-        return view('profesor.index', compact('profesores'));
+        $salones = Salon::paginate(20);
+        return view('salon.index', compact('salones'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        return view('profesor.crear');
+        //
     }
 
     /**

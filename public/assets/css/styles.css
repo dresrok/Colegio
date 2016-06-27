@@ -1,0 +1,308 @@
+/* main styles */
+body {
+  direction: ltr;
+  height: 100%;
+  min-width: 100%;
+  position: absolute;  
+}
+
+.site-wrapper {  
+  background-color: #fff;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
+}
+
+.site-wrapper .navbar-header.fixed-brand {
+  margin-top: 5px;
+}
+
+.edit-profile > div + div,
+.edit-forest > div + div,
+.show-study > div + div,
+.edit-study > div + div {
+  padding-left: 5px;
+}
+
+.index-forest td > a,
+.show-forest td > a {
+  font-size: 13px;
+}
+
+#form_upload_data input[type="file"] {
+  padding-top: 7px;
+}
+
+.create-study .input-group.no-boder-lr .input-group-addon,
+.edit-study .input-group.no-boder-lr .input-group-addon {
+  border-width: 1px 0;
+}
+
+.show-study .form-group .label,
+.show-study .planilla .label,
+.ivi-alphadiversity .form-group .label {
+  font-size: 95%;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+.show-study .planilla p,
+#form-delete-worksheet {
+  display: inline-block;
+  z-index: 2;
+}
+
+#form-delete-worksheet {
+  margin-left: -5px;
+}
+
+#form-delete-worksheet .label.label-danger {
+  border: 0;
+}
+
+.upload-study .btn.btn-link {
+  padding-left: 0;
+}
+
+.no-margin{
+  margin:0;
+}
+
+header {
+	height: 70px;
+}
+
+.home {
+  padding-bottom: 85px;
+}
+
+.messages {
+  font-size: 13px;
+}
+
+.well {
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+
+.options {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;  
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 24em;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+footer {
+  background-color: #333;  
+  bottom: 0;
+  height: 80px;
+  overflow: hidden;
+  padding: 15px 0;
+  position: absolute;
+  width: 100%;    
+}
+
+footer div {
+  color: #ffffff;
+}
+
+/* Sarbaro Theme */
+
+.navbar-brand {
+	font-size: 24px;
+	height: inherit;
+	padding: 18px 18px;
+}
+
+.navbar-brand span {
+	color: #579527;
+}
+
+.navbar-default {
+  background-color: #273B5B !important;
+  border-color: #273B5B !important;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-toggle {
+  color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: inherit !important;
+}
+
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 200px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #273B5B;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 200px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  border-left: 5px solid transparent;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  background: rgba(255,255,255,0.2);
+  border-left: #579527 5px solid;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+@media(max-width:768px) { 
+  .index-forest td > a,
+  .show-forest td > a {
+    margin-top: 2px;
+  }
+
+}
+
+@media(min-width:768px) {
+  .navbar {
+    border-radius: 0 !important;
+  }
+
+  #wrapper {
+    padding-left: 200px;
+  }
+
+  #wrapper.toggled {
+    padding-left: 200px;
+  }
+
+  #sidebar-wrapper {
+    width: 200px;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 200px;
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+
+  #form_login,
+  #form_register,
+  #registered_account,
+  #verified_account {
+    margin-top: 10%;
+  }
+
+}
+
+/* jQuery Validator */
+.has-error > label {
+  color: inherit !important;
+}
+.has-error input,
+.has-error .selectize-control .selectize-input {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.has-error label.error,
+.create-study label.error,
+.edit-study label.error {
+  color: #a94442;
+  font-size: 12px;
+}
+
+.create-study label.error,
+.edit-study label.error {
+  width: 100%;
+}

@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => Colegio\User::class,
+    'model' => Colegio\Entities\User::class,
 
     /*
     |--------------------------------------------------------------------------

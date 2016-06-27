@@ -10,7 +10,7 @@
         {{-- Brand and toggle get grouped for better mobile display --}}
         <div class="container">
           <div class="navbar-header fixed-brand">
-            <a class="navbar-brand" href="{{ URL::to('/') }}"><span class="glyphicon glyphicon-leaf"></span> Sarbaro</a>
+            <a class="navbar-brand" href="{{ URL::to('/') }}">Colegio Laravel</a>
           </div>
           {{-- navbar-header --}}
         </div>

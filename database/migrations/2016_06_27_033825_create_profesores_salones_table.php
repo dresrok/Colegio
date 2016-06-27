@@ -14,8 +14,8 @@ class CreateProfesoresSalonesTable extends Migration
     {
         Schema::create('profesores_salones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('profesor_id');
-            $table->string('salon_id');
+            $table->integer('profesor_id')->unsigned();
+            $table->integer('salon_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('profesor_id')->references('id')->on('profesores');

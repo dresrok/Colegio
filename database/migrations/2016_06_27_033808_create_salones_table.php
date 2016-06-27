@@ -15,7 +15,7 @@ class CreateSalonesTable extends Migration
         Schema::create('salones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 50);
-            $table->string('numero')
+            $table->smallInteger('numero');
             $table->timestamps();
         });
     }

@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 
 use Colegio\Http\Requests;
 use Colegio\Http\Controllers\Controller;
-
-use Colegio\Entities\Profesor;
-
+use Colegio\Http\Requests\LoginRequest;
+use Auth;
 use Session;
 use Redirect;
-use Response;
+use Colegio\Entities\User;
 
-class ProfesorController extends Controller
+class CuentaController extends Controller
 {
     public function __construct(Request $request)
     {
-        $this->middleware('auth');
+        # code...
+        $this->middleware('guest', ['only'=>['logIn']]);        
     }
     /**
      * Display a listing of the resource.
@@ -26,8 +26,7 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesores = Profesor::paginate(20);
-        return view('profesor.index', compact('profesores'));
+        //
     }
 
     /**
@@ -37,7 +36,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        return view('profesor.crear');
+        //
     }
 
     /**
@@ -46,9 +45,16 @@ class ProfesorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        //
+        if (Auth::attempt( ['email'=>$request['email'], 'password'=>$request['password']] )) {
+            return Redirect::to('profesor');
+        } else {
+            $message['errors'] = 'Email o contraseña incorrectos';
+            return redirect('/')
+                    ->withErrors($message)
+                    ->withInput();
+        }
     }
 
     /**
@@ -94,5 +100,14 @@ class ProfesorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function logIn(){
+        return view('cuenta.login');
+    }
+
+    public function logOut(){
+        Auth::logout();
+        return Redirect::to('/');
     }
 }

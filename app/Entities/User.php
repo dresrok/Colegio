@@ -1,6 +1,6 @@
 <?php
 
-namespace Colegio;
+namespace Colegio\Entities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
