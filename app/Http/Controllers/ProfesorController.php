@@ -189,7 +189,7 @@ class ProfesorController extends Controller
     }
 
     /**
-     * Associate classroom to teacher.
+     * Association classroom to teacher.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -208,4 +208,21 @@ class ProfesorController extends Controller
 
         return Redirect::to('profesor');
     }
+
+    /**
+     * Associations classroom to teacher.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     */
+    public function associations()
+    {
+        $profesores = Profesor::all();
+        $salones = Salon::all();
+        $asociaciones = ProfesorSalon::all();
+
+        return view('profesor.asociaciones',compact('profesores', 'salones', 'asociaciones'));
+    }
+
+
 }

@@ -31,6 +31,11 @@
             </a>
           </li>
           <li>
+            <a href="{{ URL::to('asociaciones') }}">
+              <span class="glyphicon glyphicon-asterisk"></span>  Asociaciones
+            </a>
+          </li>
+          <li>
             <a href="{{ URL::to('cuenta/logout') }}">
               <span class="glyphicon glyphicon-off"></span>  Cerrar sesión
             </a>

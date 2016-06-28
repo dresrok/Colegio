@@ -24,5 +24,6 @@ Route::resource('profesor', 'ProfesorController');
 Route::post('profesores/check-email','ProfesorController@checkEmail');
 Route::get('profesor/asociar-salon/{id_profesor}','ProfesorController@associate');
 Route::post('profesor/asociar-salon','ProfesorController@association')->name('profesor.asociar');
+Route::get('asociaciones','ProfesorController@associations');
 
 Route::resource('salon', 'SalonController');
