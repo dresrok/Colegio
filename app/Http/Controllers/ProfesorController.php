@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 use Colegio\Http\Requests;
 use Colegio\Http\Controllers\Controller;
+use Colegio\Http\Requests\ProfesorRequest;
 
 use Colegio\Entities\Profesor;
+use Colegio\Entities\ProfesorSalon;
+use Colegio\Entities\Salon;
 
 use Session;
 use Redirect;
@@ -26,8 +29,9 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesores = Profesor::paginate(20);
-        return view('profesor.index', compact('profesores'));
+        $profesores = Profesor::where('estado', 1)->paginate(15);
+        $salones = Salon::all();
+        return view('profesor.index', compact('profesores', 'salones'));
     }
 
     /**
@@ -37,7 +41,42 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        return view('profesor.crear');
+        $modal = array(
+            'title' => 'Mensaje de confirmación',
+            'body' => '¿Está seguro de guardar el registro del profesor?'
+        );
+        return view('profesor.crear', compact('modal'));
+    }
+
+    /**
+     * Check if an email exist.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkEmail(Request $request)
+    {
+        if( isset($request['id']) ) {
+            $id = $request['id'];
+            $email = $request['email'];
+            $profesor = Profesor::find($id);
+            if( $email == $profesor->email ) {
+                return response()->json(TRUE);
+            } else {
+                $profesor = Profesor::where('email', $email)->get();
+                if($profesor->isEmpty()) {
+                    return response()->json(TRUE);
+                }
+                return response()->json(FALSE);
+            }
+            
+        } else {
+            $email = $request['email'];
+            $profesor = Profesor::where('email', $email)->get();
+            if($profesor->isEmpty()) {
+                return response()->json(TRUE);
+            }
+            return response()->json(FALSE);
+        }            
     }
 
     /**
@@ -46,9 +85,17 @@ class ProfesorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProfesorRequest $request)
     {
-        //
+        $profesor = Profesor::create([
+            'nombre' => $request['nombre'],
+            'email' => $request['email'],
+            'telefono' => $request['telefono'],
+            ]);
+
+        Session::flash('message', "El registro del profesor " . $profesor->nombre . " se ha creado correctamente.");
+
+        return Redirect::to('profesor');
     }
 
     /**
@@ -58,8 +105,16 @@ class ProfesorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {        
+        $profesor = Profesor::find($id);
+        $salones_id = array();
+        foreach ($profesor->salones as $detalle) {
+            array_push($salones_id, $detalle->salon_id);
+        }
+        $salones = \DB::table('salones')
+                    ->whereIn('id', $salones_id)
+                    ->get();
+        return view('profesor.ver', compact('profesor', 'salones'));
     }
 
     /**
@@ -70,7 +125,12 @@ class ProfesorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modal = array(
+            'title' => 'Mensaje de confirmación',
+            'body' => '¿Está seguro de actualizar el registro del profesor?'
+        );
+        $profesor = Profesor::find($id);
+        return view('profesor.editar', compact('profesor', 'modal'));
     }
 
     /**
@@ -80,9 +140,18 @@ class ProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProfesorRequest $request, $id)
     {
-        //
+        $profesor = Profesor::find($request['id_profesor']);
+        $profesor->nombre = $request['nombre'];
+        $profesor->email = $request['email'];
+        $profesor->telefono = $request['telefono'];
+        $profesor->save();
+
+        Session::flash('message', "El registro del profesor " . $profesor->nombre . " se ha actualizado correctamente.");
+
+        return Redirect::to('profesor');
+
     }
 
     /**
@@ -94,5 +163,49 @@ class ProfesorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Associate classroom to teacher.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function associate($id_profesor)
+    {
+        $profesor = Profesor::find($id_profesor);
+        $modal = array(
+            'title' => 'Mensaje de confirmación',
+            'body' => '¿Está seguro de asociar el/los salon(es) al profesor?'
+        );
+        $salones_id = array();
+        foreach ($profesor->salones as $detalle) {
+            array_push($salones_id, $detalle->salon_id);
+        }
+        $salones = \DB::table('salones')
+                    ->whereNotIn('id', $salones_id)
+                    ->get();
+        return view('profesor.asociar', compact('profesor', 'salones', 'modal'));        
+    }
+
+    /**
+     * Associate classroom to teacher.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function association(Request $request)
+    {
+        $profesor = Profesor::find($request['id_profesor']);
+        foreach ($request['salon'] as $value) {
+            ProfesorSalon::create([
+                'profesor_id' => $profesor->id,
+                'salon_id' => $value
+            ]);
+        }
+
+        Session::flash('message', "Al profesor " . $profesor->nombre . " se han asociado los salones correctamente.");
+
+        return Redirect::to('profesor');
     }
 }

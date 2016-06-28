@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Colegio\Http\Requests;
 use Colegio\Http\Controllers\Controller;
+use Colegio\Http\Requests\SalonRequest;
 
 use Colegio\Entities\Salon;
 
@@ -26,7 +27,7 @@ class SalonController extends Controller
      */
     public function index()
     {
-        $salones = Salon::paginate(20);
+        $salones = Salon::where('estado', 1)->paginate(15);
         return view('salon.index', compact('salones'));
     }
 
@@ -37,7 +38,11 @@ class SalonController extends Controller
      */
     public function create()
     {
-        //
+        $modal = array(
+            'title' => 'Mensaje de confirmación',
+            'body' => '¿Está seguro de guardar el registro del salón?'
+        );
+        return view('salon.crear', compact('modal'));
     }
 
     /**
@@ -46,9 +51,16 @@ class SalonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SalonRequest $request)
     {
-        //
+        $salon = Salon::create([
+            'nombre' => $request['nombre'],
+            'numero' => $request['numero'],
+            ]);
+
+        Session::flash('message', "El registro del salón " . $salon->nombre . " se ha creado correctamente.");
+
+        return Redirect::to('salon');
     }
 
     /**
@@ -59,7 +71,8 @@ class SalonController extends Controller
      */
     public function show($id)
     {
-        //
+        $salon = Salon::find($id);
+        return view('salon.ver', compact('salon'));
     }
 
     /**
@@ -70,7 +83,12 @@ class SalonController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modal = array(
+            'title' => 'Mensaje de confirmación',
+            'body' => '¿Está seguro de actualizar el registro del salón?'
+        );
+        $salon = Salon::find($id);
+        return view('salon.editar', compact('salon', 'modal'));
     }
 
     /**
@@ -80,9 +98,16 @@ class SalonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SalonRequest $request, $id)
     {
-        //
+        $salon = Salon::find($request['id_salon']);
+        $salon->nombre = $request['nombre'];
+        $salon->numero = $request['numero'];
+        $salon->save();
+
+        Session::flash('message', "El registro del salón " . $salon->nombre . " se ha actualizado correctamente.");
+
+        return Redirect::to('salon');
     }
 
     /**

@@ -1,4 +1,4 @@
-{{-- resources/views/account/login.blade.php --}}
+{{-- resources/views/cuenta/login.blade.php --}}
 @extends('layouts.landing')
 @section('title', 'Iniciar sesión')
 @section('content')

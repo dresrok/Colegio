@@ -11,9 +11,15 @@ class ProfesoresSalonesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('profesores_salones')->insert([
+        /*DB::table('profesores_salones')->insert([
 	      'profesor_id' => 1,
 	      'salon_id' => 1,
+	      'created_at' => date("Y-m-d H:i:s")
+	    ]);
+
+	    DB::table('profesores_salones')->insert([
+	      'profesor_id' => 1,
+	      'salon_id' => 2,
 	      'created_at' => date("Y-m-d H:i:s")
 	    ]);
 
@@ -21,6 +27,6 @@ class ProfesoresSalonesTableSeeder extends Seeder
 	      'profesor_id' => 2,
 	      'salon_id' => 1,
 	      'created_at' => date("Y-m-d H:i:s")
-	    ]);
+	    ]);*/
     }
 }

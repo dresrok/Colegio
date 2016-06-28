@@ -4,5 +4,9 @@ $(document).ready(function() {
 		e.preventDefault();
 		$("#wrapper").toggleClass("toggled");
 	});
+
+	$('[data-toggle="tooltip"]').tooltip({
+      	'placement': 'top'
+    });
 	
 });

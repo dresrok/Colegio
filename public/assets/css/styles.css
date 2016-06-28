@@ -22,51 +22,8 @@ body {
   margin-top: 5px;
 }
 
-.edit-profile > div + div,
-.edit-forest > div + div,
-.show-study > div + div,
-.edit-study > div + div {
-  padding-left: 5px;
-}
-
-.index-forest td > a,
-.show-forest td > a {
-  font-size: 13px;
-}
-
-#form_upload_data input[type="file"] {
-  padding-top: 7px;
-}
-
-.create-study .input-group.no-boder-lr .input-group-addon,
-.edit-study .input-group.no-boder-lr .input-group-addon {
-  border-width: 1px 0;
-}
-
-.show-study .form-group .label,
-.show-study .planilla .label,
-.ivi-alphadiversity .form-group .label {
-  font-size: 95%;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-.show-study .planilla p,
-#form-delete-worksheet {
-  display: inline-block;
-  z-index: 2;
-}
-
-#form-delete-worksheet {
-  margin-left: -5px;
-}
-
-#form-delete-worksheet .label.label-danger {
-  border: 0;
-}
-
-.upload-study .btn.btn-link {
-  padding-left: 0;
+.table.table-hover.table-condensed td a {
+  font-size: 12px;
 }
 
 .no-margin{
@@ -237,10 +194,6 @@ footer div {
 }
 
 @media(max-width:768px) { 
-  .index-forest td > a,
-  .show-forest td > a {
-    margin-top: 2px;
-  }
 
 }
 
@@ -275,10 +228,7 @@ footer div {
     margin-right: 0;
   }
 
-  #form_login,
-  #form_register,
-  #registered_account,
-  #verified_account {
+  #form_login {
     margin-top: 10%;
   }
 

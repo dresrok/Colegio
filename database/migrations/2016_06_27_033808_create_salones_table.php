@@ -16,6 +16,7 @@ class CreateSalonesTable extends Migration
             $table->increments('id');
             $table->string('nombre', 50);
             $table->smallInteger('numero');
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }

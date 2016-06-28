@@ -12,32 +12,20 @@ class SalonesTableSeeder extends Seeder
     public function run()
     {
         DB::table('salones')->insert([
-	      'nombre' => 'Salón Prueba',
+	      'nombre' => 'Salón A',
 	      'numero' => 1,
 	      'created_at' => date("Y-m-d H:i:s")
 	    ]);
 
 	    DB::table('salones')->insert([
-	      'nombre' => 'Salón Prueba',
-	      'numero' => 2,
+	      'nombre' => 'Salón B',
+	      'numero' => 1,
 	      'created_at' => date("Y-m-d H:i:s")
 	    ]);
 
 	    DB::table('salones')->insert([
-	      'nombre' => 'Salón Prueba',
-	      'numero' => 3,
-	      'created_at' => date("Y-m-d H:i:s")
-	    ]);
-
-	    DB::table('salones')->insert([
-	      'nombre' => 'Salón Prueba',
-	      'numero' => 4,
-	      'created_at' => date("Y-m-d H:i:s")
-	    ]);
-
-	    DB::table('salones')->insert([
-	      'nombre' => 'Salón Prueba',
-	      'numero' => 5,
+	      'nombre' => 'Salón C',
+	      'numero' => 1,
 	      'created_at' => date("Y-m-d H:i:s")
 	    ]);
     }
