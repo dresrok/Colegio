@@ -142,7 +142,8 @@ class ProfesorController extends Controller
      */
     public function update(ProfesorRequest $request, $id)
     {
-        $profesor = Profesor::find($request['id_profesor']);
+        $id_prof = $request['id_profesor'];
+        $profesor = Profesor::find($id_prof);
         $profesor->nombre = $request['nombre'];
         $profesor->email = $request['email'];
         $profesor->telefono = $request['telefono'];
