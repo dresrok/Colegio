@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'https://colegio-laravel.herokuapp.com/',
+    'url' => 'http://colegio-laravel.herokuapp.com/',
 
     /*
     |--------------------------------------------------------------------------
