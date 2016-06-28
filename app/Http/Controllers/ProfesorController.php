@@ -145,7 +145,7 @@ class ProfesorController extends Controller
         $id_prof = $request['id_profesor'];
         $profesor = Profesor::where('id', $id_prof);
         $profesor->nombre = $request['nombre'];
-        $profesor->email = $request['email'];
+        //$profesor->email = $request['email'];
         $profesor->telefono = $request['telefono'];
         $profesor->save();
 
