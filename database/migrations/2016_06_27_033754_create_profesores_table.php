@@ -18,7 +18,7 @@ class CreateProfesoresTable extends Migration
             $table->string('email')->unique();
             $table->string('telefono', 15)->nullable();
             $table->integer('estado')->default(1);
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

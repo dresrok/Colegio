@@ -16,7 +16,7 @@ class CreateProfesoresSalonesTable extends Migration
             $table->increments('id');
             $table->integer('profesor_id')->unsigned();
             $table->integer('salon_id')->unsigned();
-            $table->timestamps();
+            $table->nullableTimestamps();
 
             $table->foreign('profesor_id')->references('id')->on('profesores');
             $table->foreign('salon_id')->references('id')->on('salones');
