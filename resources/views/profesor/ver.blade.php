@@ -32,9 +32,9 @@
     </div>
   </form>
 </div>
+@if(count($salones) > 0)
 <div id="form-ver-profesor" class="col-xs-12 col-sm-12 col-lg-12">
-  <h2>Salones asociados</h2>
-  @if(count($salones) > 0)
+  <h2>Salones asociados</h2>  
   <table class="table table-hover table-condensed">
     <thead>
       <th>Salón</th>
@@ -49,6 +49,6 @@
     @endforeach   
     </tbody>
   </table>
-  @endif
 </div>
+@endif
 @endsection

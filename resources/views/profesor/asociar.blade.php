@@ -43,8 +43,3 @@
 </div>
 @include('alerts.modal')
 @stop
-@section('scripts')
-  {!! Html::script('assets/js/jquery.validate.min.js') !!}
-  {!! Html::script('assets/js/selectize.js') !!}
-  {!! Html::script('assets/js/profesor.js') !!}
-@stop

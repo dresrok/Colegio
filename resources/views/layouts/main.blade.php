@@ -61,5 +61,10 @@
     {!! Html::script('assets/js/bootstrap.min.js') !!}
     @yield('scripts')
     {!! Html::script('assets/js/app.js') !!}
+    {!! Html::script('assets/js/jquery.validate.min.js') !!}
+    {!! Html::script('assets/js/additional-methods.min.js') !!}
+    {!! Html::script('assets/js/selectize.js') !!}
+    {!! Html::script('assets/js/profesor.js') !!}
+    {!! Html::script('assets/js/salon.js') !!}
   </body>
 </html>

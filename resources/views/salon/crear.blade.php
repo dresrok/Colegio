@@ -28,8 +28,3 @@
 </div>
 @include('alerts.modal')
 @stop
-@section('scripts')  
-  {!! Html::script('assets/js/jquery.validate.min.js') !!}
-  {!! Html::script('assets/js/additional-methods.min.js') !!}
-  {!! Html::script('assets/js/salon.js') !!}
-@stop
